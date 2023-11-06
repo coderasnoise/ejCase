@@ -1,6 +1,6 @@
 package com.emlakjet.ejcase.service;
 
-import com.emlakjet.ejcase.entities.UserResponse;
+
 import com.emlakjet.ejcase.repository.BillInfoRepository;
 import com.emlakjet.ejcase.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
