@@ -10,9 +10,11 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @Column(unique = true)
     private String email;
 
-    // Getter ve Setter metotları
+
     public Long getId() {
         return id;
     }
