@@ -17,9 +17,8 @@ public class BillController {
     private BillInfoService billInfoService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createBill(@RequestBody BillInfo billInfo) {
-        // Fatura işlemini servis aracılığıyla gerçekleştirin
-        ResponseEntity<?> response = billInfoService.processBill(billInfo);
+    public ResponseEntity<?> createBill(@RequestBody String requestBody) {
+        ResponseEntity<?> response = billInfoService.processBillFromData(requestBody);
         return response;
     }
     @GetMapping("/all")

@@ -17,6 +17,7 @@ public class BillInfo {
     private String productName;
     private String billNo;
 
+
     public User getUser() {
         return user;
     }

@@ -21,6 +21,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse createUser(UserRequest userRequest) {
+
+        User existingUser = userRepository.findByEmail(userRequest.getEmail());
+        if (existingUser != null) {
+            return null; // E-posta adresi zaten kullanılıyor
+        }
+
         User user = new User();
         user.setFirstName(userRequest.getFirstName());
         user.setLastName(userRequest.getLastName());

@@ -21,8 +21,11 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<?> createUser(@RequestBody UserRequest userRequest) {
         UserResponse createdUser = userService.createUser(userRequest);
+        if (createdUser == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Aynı e-posta adresiyle kayıtlı kullanıcı mevcut.");
+        }
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
@@ -32,4 +35,5 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }
+
 
