@@ -1,5 +1,7 @@
 package com.emlakjet.ejcase.controller;
 
+import com.emlakjet.ejcase.entities.BillInfoRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +13,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bills")
+@RequiredArgsConstructor
 public class BillController {
 
-    @Autowired
-    private BillInfoService billInfoService;
+
+    private final BillInfoService billInfoService;
+
 
     @PostMapping("/create")
-    public ResponseEntity<?> createBill(@RequestBody String requestBody) {
-        ResponseEntity<?> response = billInfoService.processBillFromData(requestBody);
+    public ResponseEntity<?> createBill(@RequestBody BillInfoRequest billInfoRequest) {
+        ResponseEntity<?> response = billInfoService.processBillFromData(billInfoRequest);
         return response;
     }
     @GetMapping("/all")

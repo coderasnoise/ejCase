@@ -3,6 +3,7 @@ package com.emlakjet.ejcase.controller;
 import com.emlakjet.ejcase.entities.UserRequest;
 import com.emlakjet.ejcase.entities.UserResponse;
 import com.emlakjet.ejcase.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
+
     private final UserService userService;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@RequestBody UserRequest userRequest) {
