@@ -16,7 +16,7 @@ public interface BillInfoRepository extends JpaRepository<BillInfo, Long> {
     List<BillInfo> findByIsDeniedFalse();
 
     @Query(
-            value = "SELECT sum(amount) From bills WHERE user_id = :userId",
+            value = "SELECT sum(amount) From bills WHERE user_id = :userId AND is_denied=false",
             nativeQuery = true)
     Double checkTotalAmountByUserId(@Param("userId") Long userId);
 

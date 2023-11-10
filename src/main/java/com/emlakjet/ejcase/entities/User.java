@@ -1,5 +1,6 @@
 package com.emlakjet.ejcase.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +29,8 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<BillInfo> billInfos = new ArrayList<>();
 
 }

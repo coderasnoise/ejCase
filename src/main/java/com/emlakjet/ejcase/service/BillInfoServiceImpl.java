@@ -60,9 +60,7 @@ public class BillInfoServiceImpl implements BillInfoService {
             BillInfo savedBill = billInfoRepository.save(approvedBill);
             BillInfoResponse billInfoResponse = billMapper.billInfoEntityToBillInfoResponse(savedBill);
 
-
             return new ResponseEntity<>(billInfoResponse, HttpStatus.CREATED);
-
         }
     }
 

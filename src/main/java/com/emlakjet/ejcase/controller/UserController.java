@@ -1,5 +1,6 @@
 package com.emlakjet.ejcase.controller;
 
+
 import com.emlakjet.ejcase.model.user.UserRequest;
 import com.emlakjet.ejcase.model.user.UserResponse;
 import com.emlakjet.ejcase.service.UserService;
@@ -16,6 +17,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+
 
 
     @PostMapping("/create")
