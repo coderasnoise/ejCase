@@ -1,7 +1,6 @@
 package com.emlakjet.ejcase.repository;
+
 import com.emlakjet.ejcase.entities.BillInfo;
-import com.emlakjet.ejcase.entities.BillInfoRequest;
-import com.emlakjet.ejcase.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,10 +10,14 @@ import java.util.List;
 
 @Repository
 public interface BillInfoRepository extends JpaRepository<BillInfo, Long> {
-    List<BillInfo> findByUser(User existingUser);
+
+    List<BillInfo> findByIsDeniedTrue();
+
+    List<BillInfo> findByIsDeniedFalse();
+
     @Query(
-            value = "SELECT sum(amount) FROM users INNER JOIN public.bills b on users.id = b.user_id WHERE users.email = :userEmail",
+            value = "SELECT sum(amount) From bills WHERE user_id = :userId",
             nativeQuery = true)
-    Double checkAmountByEmail(@Param("userEmail") String userEmail);
+    Double checkTotalAmountByUserId(@Param("userId") Long userId);
 
 }

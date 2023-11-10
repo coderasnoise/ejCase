@@ -1,10 +1,9 @@
 package com.emlakjet.ejcase.controller;
 
-import com.emlakjet.ejcase.entities.UserRequest;
-import com.emlakjet.ejcase.entities.UserResponse;
+import com.emlakjet.ejcase.model.user.UserRequest;
+import com.emlakjet.ejcase.model.user.UserResponse;
 import com.emlakjet.ejcase.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +32,8 @@ public class UserController {
         List<UserResponse> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
+
 }
 
 
