@@ -23,21 +23,5 @@ public interface BillMapper {
     @Mapping(source = "billInfo.amount", target = "amount")
     @Mapping(source = "billInfo.productName", target = "productName")
     @Mapping(source = "billInfo.billNo", target = "billNo")
-    BillInfoRequest billInfoToBillInfoRequest(BillInfo billInfo);
-
-    @Mapping(source = "billInfoResponse.firstName", target = "user.firstName")
-    @Mapping(source = "billInfoResponse.lastName", target = "user.lastName")
-    @Mapping(source = "billInfoResponse.email", target = "user.email")
-    @Mapping(source = "billInfoResponse.amount", target = "amount")
-    @Mapping(source = "billInfoResponse.productName", target = "productName")
-    @Mapping(source = "billInfoResponse.billNo", target = "billNo")
-    BillInfo billInfoResponseToBillInfoEntity(BillInfoResponse billInfoResponse);
-
-    @Mapping(source = "user.firstName", target = "firstName")
-    @Mapping(source = "user.lastName", target = "lastName")
-    @Mapping(source = "user.email", target = "email")
-    @Mapping(source = "billInfo.amount", target = "amount")
-    @Mapping(source = "billInfo.productName", target = "productName")
-    @Mapping(source = "billInfo.billNo", target = "billNo")
     BillInfoResponse billInfoEntityToBillInfoResponse(BillInfo billInfo);
 }

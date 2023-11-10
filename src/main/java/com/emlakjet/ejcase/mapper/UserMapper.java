@@ -10,12 +10,6 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     User userRequestToUser(UserRequest userRequest);
-
-    UserRequest userToUserRequest(User user);
-
     UserResponse userToUserResponse(User user);
-
-    User userResponseToUser(UserResponse userResponse);
-
     List<UserResponse> toResponseList(List<User> userList);
 }

@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         User existingUser = userRepository.findByEmail(userRequest.getEmail());
 
         if (existingUser != null) {
-            return null; // E-posta adresi zaten kullanılıyor
+            return null;
         }
 
         User savedUser = userMapper.userRequestToUser(userRequest);
