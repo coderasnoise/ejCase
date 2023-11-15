@@ -46,9 +46,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse updateUser(Long userId, UserRequest userRequest) {
         User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("kullanıcı mevcut değil."));
-        user.setFirstName(userRequest.getFirstName());
-        user.setLastName(userRequest.getLastName());
-        user.setEmail(userRequest.getEmail());
+        userMapper.emailUserRequestToUser(userRequest, user);
         userRepository.save(user);
         return userMapper.userToUserResponse(user);
 
