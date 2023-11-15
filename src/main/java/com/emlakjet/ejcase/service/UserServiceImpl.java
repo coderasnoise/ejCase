@@ -36,6 +36,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void deleteUser(Long userId) {
+        if(!userRepository.existsById(userId)){
+            throw new RuntimeException("böyle bir user mevcut değil.");
+        }
+        userRepository.deleteById(userId);
+    }
+
+    @Override
+    public UserResponse updateUser(Long userId, UserRequest userRequest) {
+        User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("kullanıcı mevcut değil."));
+        user.setFirstName(userRequest.getFirstName());
+        user.setLastName(userRequest.getLastName());
+        user.setEmail(userRequest.getEmail());
+        userRepository.save(user);
+        return userMapper.userToUserResponse(user);
+
+
+    }
+
+    @Override
     public List<UserResponse> getAllUsers() {
 
         List<User> users = userRepository.findAll();

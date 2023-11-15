@@ -30,7 +30,7 @@ public class User {
     private String email;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BillInfo> billInfos = new ArrayList<>();
 
 }
